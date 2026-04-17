@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schotland 2026 — Expeditie Highlands</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1f2e;
+    --navy-deep: #05141f;
+    --navy-soft: #13334a;
+    --accent: #e8b84a;
+    --accent-warm: #d4a336;
+    --cream: #f4efe6;
+    --paper: #ebe4d5;
+    --text: #1a2833;
+    --mute: #6b7a87;
+    --line: rgba(255,255,255,0.1);
+    --line-dark: rgba(10,31,46,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Archivo', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========= NAV ========= */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(5,20,31,0.92);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-brand {
+    color: white;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-brand span {
+    color: var(--accent);
+  }
+
+  .nav-countdown {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .nav-countdown strong {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+
+  /* ========= HERO ========= */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,20,31,0.5) 0%, rgba(5,20,31,0.75) 60%, var(--navy-deep) 100%),
+      linear-gradient(135deg, #1a3a52 0%, #0a1f2e 50%, #05141f 100%);
+  }
+
+  /* SVG mountain silhouette layer */
+  .hero-mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    z-index: 1;
+  }
+
+  .hero-mountains svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Stars / mist */
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6) 50%, transparent 50%),
+      radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.4) 50%, transparent 50%),
+      radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.5) 50%, transparent 50%),
+      radial-gradient(1px 1px at 40% 50%, rgba(255,255,255,0.3) 50%, transparent 50%),
+      radial-gradient(2px 2px at 70% 15%, rgba(255,255,255,0.7) 50%, transparent 50%);
+    background-size: 400px 400px;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero h1 em {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .hero-tagline {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-meta-item {
+    padding: 1.25rem 2rem;
+    border-right: 1px solid var(--line);
+    min-width: 140px;
+  }
+
+  .hero-meta-item:last-child { border-right: none; }
+
+  .hero-meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-meta-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 2;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ========= STATUS BANNER ========= */
+  .status-banner {
+    background: var(--navy);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .status-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .status-label {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .status-text {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    line-height: 1.4;
+  }
+
+  .status-text strong {
+    font-family: 'Archivo', sans-serif;
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* ========= SECTION HEADER ========= */
+  .section-header {
+    padding: 5rem 2rem 2rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--accent-warm);
+  }
+
+  .section-subtitle {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--mute);
+  }
+
+  /* ========= TIMELINE ========= */
+  .timeline {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .stop {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--line-dark);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .stop:last-child { border-bottom: none; }
+
+  .stop-date {
+    text-align: right;
+    padding-top: 0.2rem;
+  }
+
+  .stop-weekday {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--mute);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .stop-day {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--navy);
+    letter-spacing: -2px;
+  }
+
+  .stop-month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--navy);
+    font-weight: 700;
+    margin-top: 0.3rem;
+  }
+
+  .stop-end-date {
+    font-size: 0.75rem;
+    color: var(--mute);
+    margin-top: 0.6rem;
+    font-style: italic;
+    font-family: 'Libre Caslon Text', serif;
+  }
+
+  .stop-body {
+    padding-left: 2rem;
+    border-left: 2px solid var(--line-dark);
+    position: relative;
+  }
+
+  .stop-body::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--navy);
+  }
+
+  .stop-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    background: var(--navy);
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .stop-tag.tag-ferry { background: #2c5a7c; }
+  .stop-tag.tag-hotel { background: var(--accent-warm); color: var(--navy); }
+  .stop-tag.tag-airbnb { background: #c1344e; }
+  .stop-tag.tag-tbd { background: var(--mute); }
+
+  .stop-nights {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    margin-left: 0.25rem;
+  }
+
+  .stop-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.1;
+  }
+
+  .stop-location {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    color: var(--mute);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .stop-details {
+    font-size: 0.9rem;
+    color: #3a4a55;
+  }
+
+  .stop-details p {
+    margin-bottom: 0.4rem;
+  }
+
+  .stop-details strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .stop-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(10,31,46,0.05);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    border-left: 3px solid var(--accent);
+  }
+
+  .stop-price.pending {
+    border-left-color: #c1344e;
+  }
+
+  .stop-price::before {
+    content: '✓';
+    color: var(--accent-warm);
+    font-weight: 700;
+  }
+
+  .stop-price.pending::before {
+    content: '⏱';
+    color: #c1344e;
+  }
+
+  /* === STATUS STATES === */
+  .stop.past {
+    opacity: 0.42;
+  }
+
+  .stop.past .stop-body::before {
+    background: var(--navy);
+  }
+
+  .stop.current {
+    background: linear-gradient(90deg, rgba(232,184,74,0.12) 0%, transparent 100%);
+    padding-left: 1.5rem;
+    margin-left: -1.5rem;
+    padding-right: 1.5rem;
+    margin-right: -1.5rem;
+    border-left: 4px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .stop.current .stop-day { color: var(--accent-warm); }
+  .stop.current .stop-month { color: var(--accent-warm); }
+
+  .stop.current .stop-body::before {
+    background: var(--accent);
+    border-color: var(--accent-warm);
+    box-shadow: 0 0 0 4px rgba(232,184,74,0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(232,184,74,0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(232,184,74,0.1); }
+  }
+
+  .stop-today-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--navy);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: 0.75rem;
+    animation: pulse-bg 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-bg {
+    0%, 100% { background: var(--accent); }
+    50% { background: #f5c85a; }
+  }
+
+  /* ========= COSTS ========= */
+  .costs {
+    background: var(--navy);
+    color: white;
+    padding: 5rem 2rem;
+  }
+
+  .costs-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .costs .section-title { color: white; }
+  .costs .section-eyebrow { color: var(--accent); }
+
+  .costs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .costs-column h3 {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cost-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .cost-line .label {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cost-line .amount {
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .cost-line .amount.pending {
+    color: var(--accent);
+  }
+
+  .cost-line .amount.empty {
+    color: rgba(255,255,255,0.3);
+  }
+
+  .cost-total {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .cost-total-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cost-total-amount {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+
+  /* ========= NOTES ========= */
+  .notes {
+    padding: 5rem 2rem;
+    background: var(--cream);
+  }
+
+  .notes-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .note-card {
+    background: white;
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 2rem;
+    box-shadow: 0 1px 3px rgba(10,31,46,0.08);
+  }
+
+  .note-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .note-card li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .note-card li:last-child { border-bottom: none; }
+
+  .note-card li::before {
+    content: '→';
+    color: var(--accent-warm);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .note-card strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* ========= FOOTER ========= */
+  .footer {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .footer-brand {
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 700px) {
+    .nav { padding: 0.75rem 1rem; }
+    .nav-brand { font-size: 0.7rem; }
+    .nav-countdown { font-size: 0.65rem; }
+
+    .stop {
+      grid-template-columns: 75px 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+    }
+
+    .stop-day { font-size: 2.2rem; }
+    .stop-title { font-size: 1.3rem; }
+    .stop-body { padding-left: 1.25rem; }
+
+    .hero-meta-item {
+      padding: 1rem;
+      min-width: 110px;
+    }
+
+    .costs-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* ========= MAP ========= */
+  .map-section {
+    background: var(--navy-deep);
+    padding: 5rem 0 0;
+    position: relative;
+  }
+
+  .map-section .section-title { color: white; }
+  .map-section .section-eyebrow { color: var(--accent); }
+  .map-section .section-subtitle { color: rgba(255,255,255,0.6); }
+  .map-section .section-header { padding-bottom: 2rem; }
+
+  #route-map {
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    z-index: 1;
+  }
+
+  .leaflet-popup-content-wrapper {
+    border-radius: 4px !important;
+    font-family: 'Archivo', sans-serif !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  }
+
+  .leaflet-popup-content {
+    margin: 12px 16px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .popup-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    background: var(--navy);
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  .popup-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .popup-detail {
+    color: #555;
+    font-size: 12px;
+  }
+
+  .map-legend {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  /* ========= PHOTO GALLERY ========= */
+  .destinations {
+    padding: 5rem 0 3rem;
+    background: var(--navy-deep);
+  }
+
+  .destinations .section-title { color: white; }
+  .destinations .section-eyebrow { color: var(--accent); }
+  .destinations .section-subtitle { color: rgba(255,255,255,0.6); }
+
+  .photo-grid {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 12px;
+  }
+
+  .photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: default;
+    background: var(--navy-soft);
+  }
+
+  .photo-card img,
+  .photo-card svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+
+  .photo-card:hover img,
+  .photo-card:hover svg {
+    transform: scale(1.06);
+  }
+
+  .photo-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(5,20,31,0.85) 0%, rgba(5,20,31,0.1) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .photo-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    z-index: 2;
+    color: white;
+  }
+
+  .photo-card-tag {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .photo-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
+  }
+
+  .photo-card-sub {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Grid layout: first card takes 2 columns on first row */
+  .photo-card:nth-child(1) {
+    grid-column: span 2;
+  }
+
+  /* Last card takes 2 columns on second row */
+  .photo-card:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 700px) {
+    .photo-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 220px);
+    }
+    .photo-card:nth-child(1) { grid-column: span 2; }
+    .photo-card:nth-child(5) { grid-column: span 2; }
+  }
+
+  @media (max-width: 480px) {
+    .photo-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 200px);
+    }
+    .photo-card:nth-child(1),
+    .photo-card:nth-child(5) { grid-column: span 1; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-brand">Schotland <span>2026</span></div>
+  <div class="nav-countdown" id="navCountdown">Laden...</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars"></div>
+  <div class="hero-mountains">
+    <svg viewBox="0 0 1600 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Far mountains -->
+      <path d="M0,500 L0,320 L150,240 L280,290 L420,200 L560,260 L700,180 L850,240 L1000,190 L1150,250 L1300,200 L1450,270 L1600,220 L1600,500 Z" fill="#13334a" opacity="0.7"/>
+      <!-- Mid mountains -->
+      <path d="M0,500 L0,380 L120,310 L250,360 L400,280 L540,340 L680,270 L820,330 L970,290 L1110,350 L1260,300 L1400,370 L1600,320 L1600,500 Z" fill="#0a1f2e" opacity="0.85"/>
+      <!-- Near mountains -->
+      <path d="M0,500 L0,430 L100,380 L220,420 L360,360 L500,410 L640,370 L790,420 L940,380 L1080,430 L1230,390 L1380,440 L1600,400 L1600,500 Z" fill="#05141f"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">19 April — 1 Mei 2026</div>
+    <h1>
+      Schotland<br>
+      <em>de Highlands expeditie</em>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Duur</div>
+        <div class="hero-meta-value">12 dagen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Reizigers</div>
+        <div class="hero-meta-value">3 personen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Transport</div>
+        <div class="hero-meta-value">Ferry &amp; auto</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Bestemming</div>
+        <div class="hero-meta-value">Highlands</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">↓ Ontdek de reis</div>
+</section>
+
+<!-- Status banner — updates automatically -->
+<section class="status-banner">
+  <div class="status-banner-inner">
+    <div class="status-label" id="statusLabel">Reisstatus</div>
+    <div class="status-text" id="statusText">Status wordt geladen...</div>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="map-section">
+  <div class="section-header" style="text-align: center;">
+    <div class="section-eyebrow">Route</div>
+    <h2 class="section-title">De <em>expeditie</em></h2>
+    <p class="section-subtitle">Van Breda naar de Highlands en weer terug</p>
+  </div>
+  <div id="route-map"></div>
+  <div class="map-legend">
+    <div class="legend-item"><div class="legend-dot" style="background: #2c5a7c;"></div> Ferry</div>
+    <div class="legend-item"><div class="legend-dot" style="background: #c1344e;"></div> Airbnb</div>
+    <div class="legend-item"><div class="legend-dot" style="background: #e8b84a;"></div> Hotel</div>
+    <div class="legend-item"><div class="legend-dot" style="background: #6b7a87;"></div> Nog te boeken</div>
+  </div>
+</section>
+
+<!-- Destinations Photo Gallery -->
+<section class="destinations">
+  <div class="section-header" style="text-align: center;">
+    <div class="section-eyebrow">Bestemmingen</div>
+    <h2 class="section-title">Vijf <em>etappes</em></h2>
+    <p class="section-subtitle">Van de straten van Edinburgh tot de kustlijn van Oban</p>
+  </div>
+
+  <div class="photo-grid">
+
+    <!-- Edinburgh: Pexels 968705 — Edinburgh Castle by Linn Creutzer -->
+    <div class="photo-card" style="background: linear-gradient(135deg,#1a1a3e,#3a1520);">
+      <img src="https://images.pexels.com/photos/968705/pexels-photo-968705.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop" alt="Edinburgh Castle, Scotland"
+           onerror="this.style.display='none'" loading="lazy">
+      <div class="photo-card-content">
+        <div class="photo-card-tag">Dag 2–3</div>
+        <div class="photo-card-title">Edinburgh</div>
+        <div class="photo-card-sub">2 nachten · Castle, Old Town &amp; Royal Mile</div>
+      </div>
+    </div>
+
+    <!-- Achintraid: Pexels 13918194 — Scottish loch & mountains -->
+    <div class="photo-card" style="background: linear-gradient(135deg,#1a3040,#0a2535);">
+      <img src="https://images.pexels.com/photos/13918194/pexels-photo-13918194.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Schotse loch met bergen, Wester Ross"
+           onerror="this.style.display='none'" loading="lazy">
+      <div class="photo-card-content">
+        <div class="photo-card-tag">Dag 4–5</div>
+        <div class="photo-card-title">Achintraid</div>
+        <div class="photo-card-sub">2 nachten · Loch Kishorn &amp; Applecross</div>
+      </div>
+    </div>
+
+    <!-- Isle of Skye: Pexels 20350233 — Old Man of Storr aerial -->
+    <div class="photo-card" style="background: linear-gradient(135deg,#3a4a55,#1a2530);">
+      <img src="https://images.pexels.com/photos/20350233/pexels-photo-20350233.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Old Man of Storr, Isle of Skye"
+           onerror="this.style.display='none'" loading="lazy">
+      <div class="photo-card-content">
+        <div class="photo-card-tag">Dag 6–8</div>
+        <div class="photo-card-title">Isle of Skye</div>
+        <div class="photo-card-sub">3 nachten · Old Man of Storr &amp; Staffin</div>
+      </div>
+    </div>
+
+    <!-- Glencoe: Pexels 34624719 — Glencoe Highlands at sunset -->
+    <div class="photo-card" style="background: linear-gradient(135deg,#2a3525,#131e10);">
+      <img src="https://images.pexels.com/photos/34624719/pexels-photo-34624719.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Glen Coe, Schotse Highlands"
+           onerror="this.style.display='none'" loading="lazy">
+      <div class="photo-card-content">
+        <div class="photo-card-tag">Dag 9</div>
+        <div class="photo-card-title">Glencoe</div>
+        <div class="photo-card-sub">1 nacht · Three Sisters &amp; Clachaig Inn</div>
+      </div>
+    </div>
+
+    <!-- Oban: Pexels 3504092 — Lismore Lighthouse, Oban coast -->
+    <div class="photo-card" style="background: linear-gradient(135deg,#1a2535,#0a2030);">
+      <img src="https://images.pexels.com/photos/3504092/pexels-photo-3504092.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop" alt="Oban kust, westkust Schotland"
+           onerror="this.style.display='none'" loading="lazy">
+      <div class="photo-card-content">
+        <div class="photo-card-tag">Dag 10</div>
+        <div class="photo-card-title">Oban</div>
+        <div class="photo-card-sub">1 nacht · havenstad &amp; McCaig's Tower</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="timeline-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Expeditieschema</div>
+    <h2 class="section-title">Dag voor <em>dag</em></h2>
+    <p class="section-subtitle">Elke etappe, elke overnachting — volg de reis</p>
+  </div>
+
+  <div class="timeline" id="timeline">
+    <!-- Stops injected by JS to apply past/current/future state -->
+  </div>
+</section>
+
+<!-- Costs -->
+<section class="costs">
+  <div class="costs-inner">
+    <div style="text-align: center;">
+      <div class="section-eyebrow">Begroting</div>
+      <h2 class="section-title">De <em>kosten</em></h2>
+    </div>
+
+    <div class="costs-grid">
+      <div class="costs-column">
+        <h3>Betaald</h3>
+        <div class="cost-line"><span class="label">P&amp;O Ferry (retour)</span><span class="amount">€1.013,45</span></div>
+        <div class="cost-line"><span class="label">Edinburgh — 2 nachten</span><span class="amount">€385,00</span></div>
+        <div class="cost-line"><span class="label">Achintraid — 2 nachten</span><span class="amount">€228,20</span></div>
+        <div class="cost-line"><span class="label">Isle of Skye — 3 nachten</span><span class="amount">€740,00</span></div>
+        <div class="cost-line"><span class="label">Glencoe — 1 nacht</span><span class="amount">~€220,00</span></div>
+
+        <div class="cost-total">
+          <span class="cost-total-label">Totaal betaald</span>
+          <span class="cost-total-amount">€2.586,65</span>
+        </div>
+      </div>
+
+      <div class="costs-column">
+        <h3>Nog te betalen</h3>
+        <div class="cost-line"><span class="label">Oban — 1 nacht</span><span class="amount pending">€177,95</span></div>
+        <div class="cost-line"><span class="label">Laatste nacht</span><span class="amount pending">~€160,00</span></div>
+        <div class="cost-line"><span class="label">Benzine</span><span class="amount empty">—</span></div>
+        <div class="cost-line"><span class="label">Boodschappen</span><span class="amount empty">—</span></div>
+        <div class="cost-line"><span class="label">Excursies</span><span class="amount empty">—</span></div>
+        <div class="cost-line"><span class="label">Pubs &amp; eten</span><span class="amount empty">—</span></div>
+
+        <div class="cost-total">
+          <span class="cost-total-label">Open posten</span>
+          <span class="cost-total-amount" style="color: var(--accent);">~€337,95</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Notes -->
+<section class="notes">
+  <div class="notes-inner">
+    <div style="text-align: center;">
+      <div class="section-eyebrow">Aandachtspunten</div>
+      <h2 class="section-title">Niet <em>vergeten</em></h2>
+    </div>
+
+    <div class="note-card">
+      <ul>
+        <li><span><strong>Clachaig Inn Glencoe:</strong> reservering vermeldt 0 kinderen — even checken i.v.m. Faber.</span></li>
+        <li><span><strong>Laatste nacht (29 apr):</strong> nog boeken — logisch richting Hull.</span></li>
+        <li><span><strong>Oban:</strong> gratis annuleren tot 26 april.</span></li>
+        <li><span><strong>P&amp;O bestelreferentie:</strong> POO3SEDOAZWMC · Kenteken: ng057d.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-brand">Schotland <span>2026</span></div>
+  <div>Highlands expeditie · april 2026</div>
+  <div style="margin-top: 0.5rem; font-size: 0.65rem; opacity: 0.5;">Foto's via Pexels · Kaart via OpenStreetMap</div>
+</footer>
+
+<script>
+// ============================================================
+// REIS DATA
+// ============================================================
+const trip = {
+  start: '2026-04-19',
+  end:   '2026-05-01',
+  stops: [
+    {
+      from: '2026-04-19', to: '2026-04-20',
+      tag: 'ferry', tagLabel: 'P&O Ferry',
+      title: 'Ferry Rotterdam → Hull',
+      location: 'Europoort, Rotterdam',
+      details: [
+        'Vertrek <strong>20:00</strong> · Pride of Rotterdam',
+        'Club Cabin — tweepersoonsbed &amp; 2 stapelbedden',
+        'Incl. maaltijdpakket (2× volwassen + 1× baby)'
+      ]
+    },
+    {
+      from: '2026-04-20', to: '2026-04-22', nights: 2,
+      tag: 'airbnb', tagLabel: 'Airbnb',
+      title: 'Edinburgh',
+      location: '77-1 E Claremont St, EH7 4HU',
+      details: [
+        'Aankomst Hull 08:00 → rijden naar Edinburgh',
+        'Inchecken na 16:00 · Aangeboden door Rebecca'
+      ],
+      price: { amount: '€385,00', status: 'paid' }
+    },
+    {
+      from: '2026-04-22', to: '2026-04-24', nights: 2,
+      tag: 'airbnb', tagLabel: 'Airbnb',
+      title: 'Achintraid',
+      location: 'Craigellachie Seaside Studio · IV54 8XB',
+      details: [
+        'Sea &amp; Mountain View · Aangeboden door Neil &amp; Carol',
+        'Inchecken na 16:00 · Uitchecken 10:00'
+      ],
+      price: { amount: '€228,20', status: 'paid' }
+    },
+    {
+      from: '2026-04-24', to: '2026-04-27', nights: 3,
+      tag: 'airbnb', tagLabel: 'Airbnb',
+      title: 'Isle of Skye — Staffin',
+      location: '9 Culnacnock, Staffin, IV51 9JH',
+      details: [
+        'Aangeboden door Skye Accommodation',
+        'Inchecken na 16:00 · Uitchecken 10:00'
+      ],
+      price: { amount: '€740,00', status: 'paid' }
+    },
+    {
+      from: '2026-04-27', to: '2026-04-28', nights: 1,
+      tag: 'hotel', tagLabel: 'Hotel',
+      title: 'Glencoe — Clachaig Inn',
+      location: 'Glencoe, Argyll, PH49 4HX',
+      details: [
+        'Classic Family Room · Super King + 2 single beds',
+        'Inchecken na 16:00 · Uitchecken 10:30',
+        'Eten 12:00–21:00 · Geen reservering nodig'
+      ],
+      price: { amount: '£185 (~€220)', status: 'paid' }
+    },
+    {
+      from: '2026-04-28', to: '2026-04-29', nights: 1,
+      tag: 'hotel', tagLabel: 'Hotel ★★★★',
+      title: 'Oban — Oban Bay Hotel',
+      location: 'Corran Esplanade, Oban, PA34 5AE',
+      details: [
+        'Inclusief ontbijt · Gratis verblijf baby',
+        'Inchecken 15:00–23:30 · Uitchecken 7:00–11:00',
+        'Gratis annuleren t/m 26 april'
+      ],
+      price: { amount: '€177,95', status: 'pending' }
+    },
+    {
+      from: '2026-04-29', to: '2026-04-30', nights: 1,
+      tag: 'tbd', tagLabel: 'Nog te boeken',
+      title: 'Laatste nacht',
+      location: 'Nog te boeken — richting Hull',
+      details: [
+        'Budget ~€160',
+        'Zorg dat je 30 apr \'s avonds op tijd in Hull bent'
+      ]
+    },
+    {
+      from: '2026-04-30', to: '2026-05-01',
+      tag: 'ferry', tagLabel: 'P&O Ferry',
+      title: 'Ferry Hull → Rotterdam',
+      location: 'King George Dock, Hull',
+      details: [
+        'Vertrek <strong>20:00</strong> · Pride of Rotterdam',
+        'Aankomst Rotterdam <strong>08:45</strong> (1 mei)',
+        'Premier Window Cabin — 2 bedden'
+      ]
+    }
+  ]
+};
+
+// ============================================================
+// DATUM-BEWUSTE LOGICA
+// ============================================================
+function startOfDay(d) {
+  const x = new Date(d);
+  x.setHours(0,0,0,0);
+  return x;
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  const weekdays = ['zo','ma','di','wo','do','vr','za'];
+  const months = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  return {
+    weekday: weekdays[d.getDay()],
+    day: d.getDate(),
+    month: months[d.getMonth()],
+    monthFull: ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'][d.getMonth()]
+  };
+}
+
+function getStopStatus(stop, today) {
+  const start = startOfDay(stop.from);
+  const end = startOfDay(stop.to);
+  if (today < start) return 'future';
+  if (today >= end) return 'past';
+  return 'current';
+}
+
+function getTripStatus(today) {
+  const start = startOfDay(trip.start);
+  const end = startOfDay(trip.end);
+  const msPerDay = 1000 * 60 * 60 * 24;
+
+  if (today < start) {
+    const days = Math.ceil((start - today) / msPerDay);
+    return {
+      label: 'Aftellen',
+      text: days === 1
+        ? `Nog <strong>1 dag</strong> tot vertrek.`
+        : `Nog <strong>${days} dagen</strong> tot de expeditie begint.`,
+      navText: `T-${days} dagen`
+    };
+  }
+
+  if (today > end) {
+    const days = Math.floor((today - end) / msPerDay);
+    return {
+      label: 'Afgerond',
+      text: `De reis is <strong>${days} dagen geleden</strong> afgelopen. Tot de volgende!`,
+      navText: 'Afgerond'
+    };
+  }
+
+  const dayNumber = Math.floor((today - start) / msPerDay) + 1;
+  const totalDays = Math.round((end - start) / msPerDay) + 1;
+  return {
+    label: 'Onderweg',
+    text: `Dag <strong>${dayNumber}</strong> van ${totalDays} — de reis is in volle gang.`,
+    navText: `Dag ${dayNumber}/${totalDays}`
+  };
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  const today = startOfDay(new Date());
+  // --- Voor DEMO: ontkoppel de volgende regel om een test-datum te gebruiken ---
+  // const today = startOfDay('2026-04-24');
+
+  // Trip status
+  const status = getTripStatus(today);
+  document.getElementById('statusLabel').textContent = status.label;
+  document.getElementById('statusText').innerHTML = status.text;
+  document.getElementById('navCountdown').innerHTML = status.navText;
+
+  // Timeline
+  const container = document.getElementById('timeline');
+  container.innerHTML = '';
+
+  trip.stops.forEach(stop => {
+    const state = getStopStatus(stop, today);
+    const fromDate = formatDate(stop.from);
+    const toDate = formatDate(stop.to);
+
+    const priceHtml = stop.price
+      ? `<div class="stop-price ${stop.price.status === 'pending' ? 'pending' : ''}">${stop.price.amount} — ${stop.price.status === 'pending' ? 'nog te betalen' : 'betaald'}</div>`
+      : '';
+
+    const todayBadge = state === 'current'
+      ? `<span class="stop-today-badge">Nu hier</span><br>`
+      : '';
+
+    const nightsHtml = stop.nights
+      ? `<span class="stop-nights">${stop.nights} ${stop.nights === 1 ? 'nacht' : 'nachten'}</span>`
+      : '';
+
+    const endDateHtml = stop.nights
+      ? `<div class="stop-end-date">tot ${toDate.weekday} ${toDate.day} ${toDate.month}</div>`
+      : `<div class="stop-end-date">${toDate.weekday} ${toDate.day} ${toDate.month}</div>`;
+
+    const detailsHtml = stop.details.map(d => `<p>${d}</p>`).join('');
+
+    const html = `
+      <div class="stop ${state}">
+        <div class="stop-date">
+          <div class="stop-weekday">${fromDate.weekday}</div>
+          <div class="stop-day">${fromDate.day}</div>
+          <div class="stop-month">${fromDate.monthFull}</div>
+          ${endDateHtml}
+        </div>
+        <div class="stop-body">
+          ${todayBadge}
+          <span class="stop-tag tag-${stop.tag}">${stop.tagLabel}</span>
+          ${nightsHtml}
+          <h3 class="stop-title">${stop.title}</h3>
+          <div class="stop-location">${stop.location}</div>
+          <div class="stop-details">${detailsHtml}</div>
+          ${priceHtml}
+        </div>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  });
+
+  // Auto-scroll to current stop if en route
+  const currentStop = document.querySelector('.stop.current');
+  if (currentStop && window.location.hash === '#today') {
+    setTimeout(() => currentStop.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+  }
+}
+
+render();
+
+// Re-render every minute so the site stays current
+setInterval(render, 60000);
+
+// ============================================================
+// INTERACTIEVE KAART (Leaflet + OpenStreetMap)
+// ============================================================
+const mapStops = [
+  { lat: 53.7418, lng: -0.2792, title: 'Hull — Ferry Terminal', detail: 'Aankomst ma 20 apr 08:00', color: '#2c5a7c', tag: 'Ferry' },
+  { lat: 55.9624, lng: -3.1922, title: 'Edinburgh', detail: '2 nachten · 20–22 apr · €385', color: '#c1344e', tag: 'Airbnb' },
+  { lat: 57.3876, lng: -5.5968, title: 'Achintraid', detail: '2 nachten · 22–24 apr · €228,20', color: '#c1344e', tag: 'Airbnb' },
+  { lat: 57.5845, lng: -6.1548, title: 'Isle of Skye — Staffin', detail: '3 nachten · 24–27 apr · €740', color: '#c1344e', tag: 'Airbnb' },
+  { lat: 56.6646, lng: -5.0566, title: 'Clachaig Inn — Glencoe', detail: '1 nacht · 27 apr · £185', color: '#e8b84a', tag: 'Hotel' },
+  { lat: 56.4198, lng: -5.4797, title: 'Oban Bay Hotel', detail: '1 nacht · 28 apr · €177,95', color: '#e8b84a', tag: 'Hotel' },
+  { lat: 54.30, lng: -1.50, title: 'Laatste nacht', detail: 'Nog te boeken · 29 apr · ~€160', color: '#6b7a87', tag: 'TBD' },
+  { lat: 53.7418, lng: -0.2792, title: 'Hull — Terug naar ferry', detail: 'Vertrek do 30 apr 20:00', color: '#2c5a7c', tag: 'Ferry' },
+];
+
+// Route segments (driving approximations)
+const routeSegments = [
+  // Hull → Edinburgh
+  [[53.7418, -0.2792], [53.95, -1.09], [54.57, -1.32], [55.0, -1.55], [55.95, -3.19], [55.9624, -3.1922]],
+  // Edinburgh → Achintraid
+  [[55.9624, -3.1922], [56.12, -3.58], [56.45, -3.99], [56.85, -4.58], [57.10, -4.95], [57.28, -5.25], [57.3876, -5.5968]],
+  // Achintraid → Staffin (Skye)
+  [[57.3876, -5.5968], [57.28, -5.72], [57.28, -5.85], [57.34, -6.05], [57.45, -6.20], [57.5845, -6.1548]],
+  // Staffin → Glencoe
+  [[57.5845, -6.1548], [57.45, -6.20], [57.28, -5.85], [57.05, -5.85], [56.86, -5.45], [56.6646, -5.0566]],
+  // Glencoe → Oban
+  [[56.6646, -5.0566], [56.55, -5.15], [56.45, -5.39], [56.4198, -5.4797]],
+  // Oban → Laatste nacht (direction Hull)
+  [[56.4198, -5.4797], [56.10, -4.60], [55.85, -3.80], [55.20, -2.50], [54.60, -1.80], [54.30, -1.50]],
+  // Laatste nacht → Hull
+  [[54.30, -1.50], [53.95, -1.09], [53.7418, -0.2792]],
+];
+
+const map = L.map('route-map', {
+  zoomControl: true,
+  scrollWheelZoom: false
+}).setView([56.8, -4.8], 7);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 18
+}).addTo(map);
+
+// Also try the dark layer on top (graceful fallback if it fails)
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+  subdomains: 'abcd',
+  maxZoom: 16
+}).addTo(map).on('tileerror', function() {
+  // If dark tiles fail, OSM underneath still shows
+});
+
+// Fix grey map issue: force recalculate after layout settles
+setTimeout(function() { map.invalidateSize(); }, 200);
+window.addEventListener('resize', function() { map.invalidateSize(); });
+
+// Draw route lines
+const ferryStyle = { color: '#2c5a7c', weight: 2, opacity: 0.5, dashArray: '8, 8' };
+const driveStyle = { color: '#e8b84a', weight: 2.5, opacity: 0.6 };
+
+routeSegments.forEach((segment, i) => {
+  L.polyline(segment, driveStyle).addTo(map);
+});
+
+// Draw markers — skip duplicates for Hull and Rotterdam (show start/end only)
+const drawnPositions = new Set();
+mapStops.forEach((stop, i) => {
+  const key = `${stop.lat.toFixed(3)},${stop.lng.toFixed(3)}`;
+  // For duplicate positions, only draw the first occurrence
+  if (drawnPositions.has(key) && stop.tag === 'Ferry') return;
+  drawnPositions.add(key);
+
+  const isStart = (i === 0);
+  const size = isStart ? 14 : 10;
+
+  const marker = L.circleMarker([stop.lat, stop.lng], {
+    radius: size,
+    fillColor: stop.color,
+    color: '#fff',
+    weight: 2,
+    opacity: 1,
+    fillOpacity: 0.9
+  }).addTo(map);
+
+  const num = i + 1;
+  const popupContent = `
+    <div class="popup-tag" style="background:${stop.color}">${stop.tag}</div>
+    <div class="popup-title">${stop.title}</div>
+    <div class="popup-detail">${stop.detail}</div>
+  `;
+  marker.bindPopup(popupContent, { closeButton: false, minWidth: 180 });
+  marker.on('mouseover', function() { this.openPopup(); });
+});
+
+// Number labels for each unique stop
+let labelNum = 1;
+const labelledPositions = new Set();
+mapStops.forEach((stop) => {
+  const key = `${stop.lat.toFixed(3)},${stop.lng.toFixed(3)}`;
+  if (labelledPositions.has(key)) { labelNum++; return; }
+  labelledPositions.add(key);
+
+  const icon = L.divIcon({
+    className: '',
+    html: `<div style="
+      width:20px; height:20px; line-height:20px; text-align:center;
+      font-family:Archivo,sans-serif; font-size:10px; font-weight:800;
+      color:white; pointer-events:none;
+    ">${labelNum}</div>`,
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+  });
+  L.marker([stop.lat, stop.lng], { icon: icon, interactive: false }).addTo(map);
+  labelNum++;
+});
+</script>
+
+</body>
+</html>
